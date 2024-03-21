@@ -628,7 +628,9 @@ if cc.has_header('sys/soundcard.h', required: get_option('oss-output'))
   # OSS output via daemon module-detect
   cdata.set('HAVE_OSS_OUTPUT', 1)
   # OSS wrapper
-  cdata.set('HAVE_OSS_WRAPPER', 1)
+  if cc.sizeof('void *') >= 8 or host_machine.cpu_family() == 'x86'
+    cdata.set('HAVE_OSS_WRAPPER', 1)
+  endif
   cdata.set('PULSEDSP_LOCATION', pulsedsp_location)
 endif
 
