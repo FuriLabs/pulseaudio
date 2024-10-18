@@ -1,3 +1,5 @@
 disable-autospawn.patch
 selectively-disable-libpulsedsp.patch
 git_tests_alignment.patch
+ucm-check-verb-for-device-status.patch
+ucm-replace-context-assertion-with-error.patch
