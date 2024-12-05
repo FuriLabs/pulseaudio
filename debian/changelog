@@ -1,3 +1,19 @@
+pulseaudio (17.0+dfsg1-1) UNRELEASED; urgency=medium
+
+  [ Alper Nebi Yasak ]
+  * New upstream version 17.0+dfsg1
+  * Drop patches applied upstream
+    - daemon/meson.build: Install dbus policy in /usr, not /etc
+    - bluetooth: Amend writeout to send more initial frames
+  * Re-add git_tests_alignment.patch not included in v17.0
+  * Cherry-pick patches to fix UCM-related crashes
+    - alsa-ucm: Replace port device UCM context assertion with an error
+    - alsa-ucm: Check UCM verb before working with device status
+  * Add patch to support old webrtc-audio-processing library
+  * Add patch to fix segfault with too many UCM devices
+
+ -- Alper Nebi Yasak <alpernebiyasak@gmail.com>  Thu, 05 Dec 2024 19:20:54 +0300
+
 pulseaudio (16.2+dfsg1-1) unstable; urgency=medium
 
   * New upstream version 16.2+dfsg1
