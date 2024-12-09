@@ -1,6 +1,7 @@
 From: Gioele Barabucci <gioele@svario.it>
 Date: Sat, 4 Mar 2023 10:00:34 +0100
 Subject: daemon/meson.build: Install dbus policy in /usr, not /etc
+
 Forwarded: https://gitlab.freedesktop.org/pulseaudio/pulseaudio/-/merge_requests/783
 
 From https://bugs.debian.org/1006631:
