@@ -2,4 +2,3 @@ disable-autospawn.patch
 dbus-policy-usr.patch
 bluetooth-send-more-frames.patch
 selectively-disable-libpulsedsp.patch
-git_tests_alignment.patch
