@@ -43,7 +43,6 @@ static void run_volume_test(
         int channels,
         bool correct,
         bool perf) {
-    fail_unless(align % channels == 0);
 
     PA_DECLARE_ALIGNED(8, int16_t, s[SAMPLES]) = { 0 };
     PA_DECLARE_ALIGNED(8, int16_t, s_ref[SAMPLES]) = { 0 };
@@ -57,6 +56,8 @@ static void run_volume_test(
     samples_ref = s_ref + (8 - align);
     samples_orig = s_orig + (8 - align);
     nsamples = SAMPLES - (8 - align);
+    if (nsamples % channels)
+        nsamples -= nsamples % channels;
     size = nsamples * sizeof(int16_t);
 
     pa_random(samples, size);
@@ -118,12 +119,12 @@ START_TEST (svolume_mmx_test) {
 
     pa_log_debug("Checking MMX svolume");
     for (i = 1; i <= 3; i++) {
-        for (j = 0; j <= 7; j += i)
-            run_volume_test(mmx_func, orig_func, j, i, true, j == 0);
+        for (j = 0; j < 7; j++)
+            run_volume_test(mmx_func, orig_func, j, i, true, false);
     }
     run_volume_test(mmx_func, orig_func, 7, 1, true, true);
-    run_volume_test(mmx_func, orig_func, 6, 2, true, true);
-    run_volume_test(mmx_func, orig_func, 6, 3, true, true);
+    run_volume_test(mmx_func, orig_func, 7, 2, true, true);
+    run_volume_test(mmx_func, orig_func, 7, 3, true, true);
 }
 END_TEST
 
@@ -145,12 +146,12 @@ START_TEST (svolume_sse_test) {
 
     pa_log_debug("Checking SSE2 svolume");
     for (i = 1; i <= 3; i++) {
-        for (j = 0; j < 7; j += i)
-            run_volume_test(sse_func, orig_func, j, i, true, j == 0);
+        for (j = 0; j < 7; j++)
+            run_volume_test(sse_func, orig_func, j, i, true, false);
     }
     run_volume_test(sse_func, orig_func, 7, 1, true, true);
-    run_volume_test(sse_func, orig_func, 6, 2, true, true);
-    run_volume_test(sse_func, orig_func, 6, 3, true, true);
+    run_volume_test(sse_func, orig_func, 7, 2, true, true);
+    run_volume_test(sse_func, orig_func, 7, 3, true, true);
 }
 END_TEST
 #endif /* defined (__i386__) || defined (__amd64__) */
@@ -174,12 +175,12 @@ START_TEST (svolume_arm_test) {
 
     pa_log_debug("Checking ARM svolume");
     for (i = 1; i <= 3; i++) {
-        for (j = 0; j < 7; j += i)
-            run_volume_test(arm_func, orig_func, j, i, true, j == 0);
+        for (j = 0; j < 7; j++)
+            run_volume_test(arm_func, orig_func, j, i, true, false);
     }
     run_volume_test(arm_func, orig_func, 7, 1, true, true);
-    run_volume_test(arm_func, orig_func, 6, 2, true, true);
-    run_volume_test(arm_func, orig_func, 6, 3, true, true);
+    run_volume_test(arm_func, orig_func, 7, 2, true, true);
+    run_volume_test(arm_func, orig_func, 7, 3, true, true);
 }
 END_TEST
 #endif /* defined (__arm__) && defined (__linux__) */
@@ -206,11 +207,11 @@ START_TEST (svolume_orc_test) {
 
     pa_log_debug("Checking Orc svolume");
     for (i = 1; i <= 2; i++) {
-        for (j = 0; j < 7; j += i)
-            run_volume_test(orc_func, orig_func, j, i, true, j == 0);
+        for (j = 0; j < 7; j++)
+            run_volume_test(orc_func, orig_func, j, i, true, false);
     }
     run_volume_test(orc_func, orig_func, 7, 1, true, true);
-    run_volume_test(orc_func, orig_func, 6, 2, true, true);
+    run_volume_test(orc_func, orig_func, 7, 2, true, true);
 }
 END_TEST
 
