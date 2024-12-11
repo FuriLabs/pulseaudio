@@ -1,4 +1,4 @@
-pulseaudio (16.2+dfsg1-1) UNRELEASED; urgency=medium
+pulseaudio (16.2+dfsg1-1) unstable; urgency=medium
 
   * New upstream version 16.2+dfsg1
     - Fix gstreamer hang when seeking (Closes: #1081707)
@@ -7,7 +7,7 @@ pulseaudio (16.2+dfsg1-1) UNRELEASED; urgency=medium
   * Silence lintian errors about custom RUNPATH
   * Fix mismatched lintian-overrides
 
- -- Alessandro Astone <alessandro.astone@canonical.com>  Mon, 09 Dec 2024 16:51:48 +0100
+ -- Alessandro Astone <alessandro.astone@canonical.com>  Wed, 11 Dec 2024 13:35:26 +0100
 
 pulseaudio (16.1+dfsg1-5.1) unstable; urgency=medium
 
