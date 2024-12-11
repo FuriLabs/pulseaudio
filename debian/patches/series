@@ -1,2 +1,3 @@
 disable-autospawn.patch
 selectively-disable-libpulsedsp.patch
+git_tests_alignment.patch
