@@ -135,3 +135,5 @@ src/pulsecore/protocol-cli.h usr/include/pulsecore
 src/pulsecore/client.h usr/include/pulsecore
 src/pulsecore/strlist.h usr/include/pulsecore
 src/pulsecore/start-child.h usr/include/pulsecore
+
+/usr/lib/*/pkgconfig/pulsecore.pc
