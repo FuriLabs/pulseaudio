@@ -884,6 +884,7 @@ if get_option('client')
   pc_files = [
     'libpulse.pc',
     'libpulse-simple.pc',
+    'pulsecore.pc',
   ]
 
   if glib_dep.found()
