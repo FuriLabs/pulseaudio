@@ -8,6 +8,8 @@ DEB_BUILD_MAINT_OPTIONS = hardening=+all
 
 include /usr/share/dpkg/default.mk
 
+export GIT_DESCRIBE_FOR_BUILD = v17.0
+
 # Needed for testsuite
 export XDG_RUNTIME_DIR = $(CURDIR)/debian/tmp/tmp/xdgruntimedir
 export CK_TIMEOUT_MULTIPLIER = 0
